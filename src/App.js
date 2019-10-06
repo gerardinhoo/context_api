@@ -1,18 +1,13 @@
-import React, { Component } from "react";
-import Family from "./Family";
+import React from "react";
+import Sport from "./Sport";
+import Store from "./Store";
 
-class App extends Component {
-  state = {
-    name: "Gerard"
-  };
-  render() {
-    return (
-      <div>
-        <p>App Component</p>
-        <Family name={this.state.name} />
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <Store>
+      <Sport />
+    </Store>
+  );
+};
 
 export default App;
