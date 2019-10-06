@@ -9,9 +9,7 @@ class App extends Component {
     return (
       <div>
         <p>App Component</p>
-        <Family />
-
-        {/* <Person name={this.state.name} /> */}
+        <Family name={this.state.name} />
       </div>
     );
   }
