@@ -1,18 +1,79 @@
-import React, { Component } from "react";
-import Family from "./Family";
+import React, { useContext, createContext } from "react";
+import "./App.css";
 
-class App extends Component {
+const UserContext = createContext();
+
+class App extends React.Component {
   state = {
-    name: "Gerard"
+    firstName: "Gerard",
+    lastName: "Eklu",
+    profession: "Software Engineer",
+    image_url: "https://ca.slack-edge.com/T03PB1F2E-UBM5LRJHH-6fe78522416f-72",
+    favorite_sport: "Soccer"
   };
+
   render() {
+    const {
+      firstName,
+      lastName,
+      profession,
+      image_url,
+      favorite_sport
+    } = this.state;
+
     return (
-      <div>
-        <p>App Component</p>
-        <Family name={this.state.name} />
-      </div>
+      <UserContext.Provider
+        value={{
+          firstName,
+          lastName,
+          profession,
+          image_url,
+          favorite_sport
+        }}
+      >
+        <Main />
+      </UserContext.Provider>
     );
   }
 }
+
+const Navbar = () => {
+  return (
+    <nav className="navbar bg-success">
+      <span className="title">GERARD'S PROFILE</span>
+    </nav>
+  );
+};
+
+const Main = () => {
+  const {
+    firstName,
+    lastName,
+    profession,
+    image_url,
+    favorite_sport
+  } = useContext(UserContext);
+
+  return (
+    <div>
+      <Navbar />
+      <div className="card text-center">
+        <img
+          src={image_url}
+          alt="profile"
+          className="round-img"
+          style={{ width: "60px" }}
+        />
+        <span>
+          <h2>
+            Full Name:{firstName} {lastName}
+          </h2>
+          <h2>Profession:{profession}</h2>
+          <h2>Favorite Sport:{favorite_sport}</h2>
+        </span>
+      </div>
+    </div>
+  );
+};
 
 export default App;
