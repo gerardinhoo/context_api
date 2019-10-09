@@ -3,23 +3,22 @@ import "./App.css";
 
 class App extends React.Component {
   state = {
-    firstName: "Gerard"
+    firstName: "GERARD"
   };
 
   render() {
     return (
       <div>
-        <Navbar />
         <Main name={this.state.firstName} />
       </div>
     );
   }
 }
 
-const Navbar = () => {
+const Navbar = ({ name }) => {
   return (
     <nav className="navbar bg-success">
-      <span className="title">GERARD'S PROFILE</span>
+      <span className="title">{name}'S PROFILE</span>
     </nav>
   );
 };
@@ -27,11 +26,7 @@ const Navbar = () => {
 const Main = ({ name }) => {
   return (
     <div>
-      <div className="card text-center">
-        <span>
-          <h2>Full Name:{name}</h2>
-        </span>
-      </div>
+      <Navbar name={name} />
     </div>
   );
 };
