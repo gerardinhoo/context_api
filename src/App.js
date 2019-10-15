@@ -38,9 +38,11 @@ class App extends React.Component {
 }
 
 const Navbar = () => {
+  const { profession } = useContext(UserContext);
   return (
     <nav className="navbar bg-success">
       <span className="title">GERARD'S PROFILE</span>
+      {profession}
     </nav>
   );
 };
